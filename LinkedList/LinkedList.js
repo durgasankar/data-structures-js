@@ -44,6 +44,22 @@ class LinkedList {
             this.head = null;
             this.tail = null;
         }
+        return tempNode;
+    }
+
+    // add the element to beginning
+    unshift(value) {
+        const newNode = new Node(value);
+        // if no node is there and trying to add a new Node
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head.next;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
     }
 }
 
@@ -61,3 +77,7 @@ myList.pop();
 // myList.pop();
 // myList.pop();
 console.log(myList);
+myList.unshift(100);
+myList.unshift(200);
+myList.unshift(300);
+console.log(myList)
