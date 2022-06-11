@@ -87,6 +87,16 @@ class LinkedList {
         }
         return tempNode;
     }
+
+    // based on index sets value at that particular index
+    set(index, value) {
+        const fetchedIndex = this.get(index);
+        if (fetchedIndex) {
+            fetchedIndex.value = value;
+            return true;
+        }
+        return false;
+    }
 }
 
 
@@ -111,4 +121,6 @@ myList.push(10);
 // myList.shift();
 // myList.shift();
 console.log(myList)
-console.log(myList.get(2))
+console.log(myList.get(1))
+console.log(myList.set(1, 99))
+console.log(myList);
