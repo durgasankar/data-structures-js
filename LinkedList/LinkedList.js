@@ -13,6 +13,7 @@ class LinkedList {
         this.length = 1;
     }
 
+    // insert the element to the end
     push(value) {
         const newNode = new Node(value);
         if (!this.head) {
@@ -26,6 +27,7 @@ class LinkedList {
         return this;
     }
 
+    // removes the element from end
     pop() {
         // having no data in the list
         if (!this.head) return undefined;
@@ -125,6 +127,23 @@ class LinkedList {
         }
         return myArray;
     }
+
+    // remove any value at any particular index
+    remove(index) {
+        // value entering to invalid position
+        if (index < 0 || index >= this.length) return false;
+        // value removing from start
+        if (index === 0) return this.shift();
+        // value removing frpm last
+        if (index === this.length - 1) return this.pop();
+        // value removing from desired location
+        const prevNode = this.get(index - 1);
+        const currentNode = prevNode.next;
+        prevNode.next = currentNode.next;
+        currentNode.next = null;
+        this.length--;
+        return true;
+    }
 }
 
 const myList = new LinkedList(2);
@@ -132,6 +151,10 @@ myList.push(4);
 myList.push(6);
 myList.push(8);
 myList.push(10);
+myList.push(12);
+myList.push(14);
+myList.push(16);
+myList.push(18);
 // console.log(myList);
 // myList.pop();
 // myList.pop();
@@ -150,8 +173,9 @@ myList.push(10);
 // console.log(myList)
 // console.log(myList.get(1))
 // console.log(myList.set(1, 99))
-myList.insert(0, 77);
-myList.insert(1, 99);
-myList.insert(myList.length - 1, 101);
-myList.insert(3, 10001)
 console.log(myList.print());
+// myList.remove(0);
+// myList.remove(1);
+// myList.remove(myList.length - 1);
+myList.remove(3)
+console.log(myList);
