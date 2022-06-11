@@ -4,7 +4,11 @@ class Node {
         this.next = null;
     }
 }
-
+/**
+ * Provies reusable functions of linked list.
+ * @author Durgasankar Mishra
+ * @created 11-06-2022
+ */
 class LinkedList {
     constructor(value) {
         const newNode = new Node(value);
@@ -144,6 +148,22 @@ class LinkedList {
         this.length--;
         return true;
     }
+
+    // reversing a linked list
+    reverse() {
+        let tempNode = this.head;
+        this.head = this.tail;
+        this.tail = tempNode;
+        let next = tempNode.next;
+        let prev = null;
+        for (let i = 0; i < this.length; i++) {
+            next = tempNode.next;
+            tempNode.next = prev;
+            prev = tempNode;
+            tempNode = next;
+        }
+        return this;
+    }
 }
 
 const myList = new LinkedList(2);
@@ -177,5 +197,6 @@ console.log(myList.print());
 // myList.remove(0);
 // myList.remove(1);
 // myList.remove(myList.length - 1);
-myList.remove(3)
-console.log(myList);
+// myList.remove(3)
+myList.reverse()
+console.log(myList.print());
