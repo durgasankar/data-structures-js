@@ -61,6 +61,21 @@ class LinkedList {
         this.length++;
         return this;
     }
+
+    // removing element to the begging of the list
+    shift() {
+        // if no node is there and trying to remove
+        if (!this.head) return undefined;
+        // more than one items
+        let tempNode = this.head;
+        this.head = this.head.next;
+        tempNode.next = null;
+        this.length--;
+        if (this.length === 0) {
+            this.tail = null;
+        }
+        return tempNode;
+    }
 }
 
 
@@ -69,15 +84,19 @@ myList.push(4);
 myList.push(6);
 myList.push(8);
 myList.push(10);
-console.log(myList);
-myList.pop();
-myList.pop();
-myList.pop();
+// console.log(myList);
 // myList.pop();
 // myList.pop();
 // myList.pop();
-console.log(myList);
+// myList.pop();
+// myList.pop();
+// myList.pop();
+// console.log(myList);
 myList.unshift(100);
-myList.unshift(200);
-myList.unshift(300);
+// myList.unshift(200);
+// myList.unshift(300);
+// console.log(myList)
+myList.shift();
+myList.shift();
+myList.shift();
 console.log(myList)
