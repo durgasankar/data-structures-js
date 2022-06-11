@@ -97,8 +97,35 @@ class LinkedList {
         }
         return false;
     }
-}
 
+    // insert any value at any particular index
+    insert(index, value) {
+        // value entering to invalid position
+        if (index < 0 || index >= this.length) return false;
+        // value entering to start
+        if (index === 0) return this.unshift(value);
+        // value entering to last
+        if (index === this.length - 1) return this.push(value);
+        // value entering to desired location
+        const newNode = new Node(value);
+        const tempNode = this.get(index - 1);
+        newNode.next = tempNode.next;
+        tempNode.next = newNode;
+        this.length++;
+        return true;
+    }
+
+    // just to print the values of the list
+    print() {
+        let myArray = [];
+        let tempNode = this.head;
+        while (tempNode) {
+            myArray.push(tempNode.value);
+            tempNode = tempNode.next;
+        }
+        return myArray;
+    }
+}
 
 const myList = new LinkedList(2);
 myList.push(4);
@@ -120,7 +147,11 @@ myList.push(10);
 // myList.shift();
 // myList.shift();
 // myList.shift();
-console.log(myList)
-console.log(myList.get(1))
-console.log(myList.set(1, 99))
-console.log(myList);
+// console.log(myList)
+// console.log(myList.get(1))
+// console.log(myList.set(1, 99))
+myList.insert(0, 77);
+myList.insert(1, 99);
+myList.insert(myList.length - 1, 101);
+myList.insert(3, 10001)
+console.log(myList.print());
