@@ -76,6 +76,17 @@ class LinkedList {
         }
         return tempNode;
     }
+
+    // find value based on the index
+    get(index) {
+        // if index is not in valid range
+        if (index < 0 || index >= this.length) return undefined;
+        let tempNode = this.head;
+        for (let i = 0; i < index; i++) {
+            tempNode = tempNode.next;
+        }
+        return tempNode;
+    }
 }
 
 
@@ -92,11 +103,12 @@ myList.push(10);
 // myList.pop();
 // myList.pop();
 // console.log(myList);
-myList.unshift(100);
+// myList.unshift(100);
 // myList.unshift(200);
 // myList.unshift(300);
 // console.log(myList)
-myList.shift();
-myList.shift();
-myList.shift();
+// myList.shift();
+// myList.shift();
+// myList.shift();
 console.log(myList)
+console.log(myList.get(2))
