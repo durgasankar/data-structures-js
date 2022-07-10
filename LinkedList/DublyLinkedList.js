@@ -112,6 +112,23 @@ class DublyLinkedList {
         currentNode.value = value;
         return true;
     }
+
+    insert(index, value) {
+        // 2H=4===8=10T (6 at index 2)
+        // 2H=4=6=8=10T
+        if (index < 0 || index > this.length) return;
+        if (index === 0) return this.unshift(value);
+        if (index === this.length) return this.push(value);
+        let afterNode = this.get(index);//8
+        const newNode = new Node(value);//6
+        let beforeNode = afterNode.prev;//4
+        beforeNode.next = newNode;
+        newNode.prev = beforeNode;
+        newNode.next = afterNode;
+        afterNode.prev = newNode;
+        this.length++;
+        return this;
+    }
 }
 
 const dublyLinkedList = new DublyLinkedList(10);
@@ -131,5 +148,7 @@ dublyLinkedList.push(80);
 // dublyLinkedList.pop();
 // dublyLinkedList.pop();
 // dublyLinkedList.shift();
-dublyLinkedList.set(4, 99);
+dublyLinkedList.insert(4, 99);
+dublyLinkedList.insert(0, 919);
+dublyLinkedList.insert(0, 9000);
 console.log(dublyLinkedList.print(), dublyLinkedList.length);
