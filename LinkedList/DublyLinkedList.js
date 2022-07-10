@@ -72,6 +72,21 @@ class DublyLinkedList {
         this.length++;
         return this;
     }
+
+    shift() {
+        // (2H)=4=6=8T before
+        //     4H=6=8T after
+        if (this.length === 0) return undefined;
+        if (this.length === 1) {
+            this.pop();
+            return;
+        }
+        let tempHead = this.head;
+        this.head = this.head.next;
+        this.head.prev = null;
+        tempHead.next = null;
+        return tempHead;
+    }
 }
 
 const dublyLinkedList = new DublyLinkedList(10);
@@ -90,4 +105,5 @@ dublyLinkedList.push(80);
 // dublyLinkedList.pop();
 // dublyLinkedList.pop();
 // dublyLinkedList.pop();
+dublyLinkedList.shift();
 console.log(dublyLinkedList.print(), dublyLinkedList.length);
