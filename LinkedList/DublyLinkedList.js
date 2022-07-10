@@ -57,9 +57,26 @@ class DublyLinkedList {
         this.length--;
         return tempTail;
     }
+
+    unshift(value) {
+        //   4H=6=8T before
+        // (2H)=4=6=8T after
+        if (this.length === 0) {
+            this.push(value);
+            return;
+        }
+        const newNode = new Node(value);
+        newNode.next = this.head;
+        this.head.prev = newNode;
+        this.head = newNode;
+        this.length++;
+        return this;
+    }
 }
 
 const dublyLinkedList = new DublyLinkedList(10);
+// dublyLinkedList.pop();
+// dublyLinkedList.unshift(5);
 dublyLinkedList.push(20);
 dublyLinkedList.push(30);
 dublyLinkedList.push(40);
@@ -67,7 +84,10 @@ dublyLinkedList.push(50);
 dublyLinkedList.push(60);
 dublyLinkedList.push(70);
 dublyLinkedList.push(80);
-dublyLinkedList.pop();
-dublyLinkedList.pop();
-dublyLinkedList.pop();
-console.log(dublyLinkedList.print());
+// dublyLinkedList.unshift(2);
+// dublyLinkedList.unshift(1);
+
+// dublyLinkedList.pop();
+// dublyLinkedList.pop();
+// dublyLinkedList.pop();
+console.log(dublyLinkedList.print(), dublyLinkedList.length);
