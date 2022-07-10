@@ -4,18 +4,16 @@ class Stack {
         this.next = null;
     }
 }
-
-// 2T
-// 4
-// 6
-// 8
 class Stack {
     constructor(value) {
         const newNode = new Node(value);
         this.top = newNode;
         this.length = 1;
     }
-
+    // 2T
+    // 4
+    // 6
+    // 8
     push(value) {
         const newNode = new Node(value);
         if (this.length !== 1) {
@@ -24,6 +22,21 @@ class Stack {
         this.top = newNode;
         this.length++;
         return this;
+    }
+
+    // 2T(remove)
+    // 4T
+    // 6
+    // 8
+    pop() {
+        let tempTop = this.top;
+        if (this.length === 1) {
+            this.top = null;
+        } else {
+            this.top = this.top.next;
+        }
+        tempTop.next = null;
+        this.length--;
     }
 }
 
@@ -34,4 +47,7 @@ stack.push(40);
 stack.push(50);
 stack.push(60);
 stack.push(70);
-stack.push(80);
+stack.pop();
+stack.pop();
+stack.pop();
+stack.pop();
