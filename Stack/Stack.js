@@ -1,4 +1,4 @@
-class Stack {
+class Node {
     constructor(value) {
         this.value = value;
         this.next = null;
@@ -16,7 +16,7 @@ class Stack {
     // 8
     push(value) {
         const newNode = new Node(value);
-        if (this.length !== 1) {
+        if (this.length >= 1) {
             newNode.next = this.top;
         }
         this.top = newNode;
@@ -37,6 +37,19 @@ class Stack {
         }
         tempTop.next = null;
         this.length--;
+        return tempTop;
+    }
+
+    print() {
+        let values = {};
+        let tempTop = this.top;
+        let index = 0;
+        while (tempTop) {
+            values[index] = tempTop.value;
+            index++;
+            tempTop = tempTop.next;
+        }
+        return values;
     }
 }
 
@@ -51,3 +64,4 @@ stack.pop();
 stack.pop();
 stack.pop();
 stack.pop();
+console.log(stack.print(), stack.length);
