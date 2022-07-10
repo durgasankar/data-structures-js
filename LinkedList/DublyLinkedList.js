@@ -40,6 +40,23 @@ class DublyLinkedList {
         }
         return values;
     }
+
+    pop() {
+        // 2H=4=6=8T before
+        // 2H=4=6T after
+        if (this.length === 0) return undefined;
+        let tempTail = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            tempTail.prev = null;
+        }
+        this.length--;
+        return tempTail;
+    }
 }
 
 const dublyLinkedList = new DublyLinkedList(10);
@@ -50,4 +67,7 @@ dublyLinkedList.push(50);
 dublyLinkedList.push(60);
 dublyLinkedList.push(70);
 dublyLinkedList.push(80);
+dublyLinkedList.pop();
+dublyLinkedList.pop();
+dublyLinkedList.pop();
 console.log(dublyLinkedList.print());
