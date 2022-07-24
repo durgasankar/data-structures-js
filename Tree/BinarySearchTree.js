@@ -37,4 +37,19 @@ class BST {
             }
         }
     }
+
+    contains(value) {
+        if (this.root === null) return false;
+        let tempRoot = this.root;
+        while (tempRoot !== null) {
+            if (value > tempRoot.value) {
+                tempRoot = tempRoot.right;
+            } else if (value < tempRoot.value) {
+                tempRoot = tempRoot.left;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 }
