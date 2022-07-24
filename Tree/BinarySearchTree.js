@@ -52,4 +52,11 @@ class BST {
         }
         return false;
     }
+
+    findMinimun(currentNode) {
+        while (currentNode.left != null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode;
+    }
 }
