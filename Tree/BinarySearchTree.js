@@ -59,4 +59,11 @@ class BST {
         }
         return currentNode;
     }
+
+    findMaximum(currentNode) {
+        while (currentNode.left != null) {
+            currentNode = currentNode.right;
+        }
+        return currentNode;
+    }
 }
